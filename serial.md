@@ -49,6 +49,51 @@ WIP
 
 ## Hardware
 
+### The computer
+
+A cheap way to build a portable setup is to use a Raspberry Pi or any clone for
+the computer part.
+
+### The Minitel's DIN interface
+
+To use the DIN interface as a serial port you have to be careful of the
+following points:
+
+- The serial port uses [TTL
+  protocol](https://www.seeedstudio.com/blog/2019/12/11/rs232-vs-ttl-beginner-guide-to-serial-communication/)
+  (Transistor-Transistor Logic != RS232)
+
+- For serial communication, 3 of the 5 pins of the DIN interface are useful:
+  **Rx**, **Tx**, **GND**
+
+- In classic TTL serial communications: (!= Minitel)
+
+  ```
+  Logical state 0 = 0V
+  Logical state 1 (Vcc) = 3.3V or 5V
+  ```
+
+  In the Minitel world:
+
+  ```
+  min    state       max
+  ---------------------------------------------------------
+  Rx & PT(in)
+    0V < logical 0 < 0.4V  (Consumed current I < 150µA)
+  2.5V < logical 1 <  15V  (Interface resistance R < 800Ω)
+
+  Tx & PT(out)
+    0V < logical 0 < 0.4V
+  2.5V < logical 1 <  15V  (Interface resistance R = 200kΩ)
+  ```
+
+  Minitel uses [open-collector](https://en.wikipedia.org/wiki/Open_collector).
+
+  ([Source](http://pila.fr/wordpress/?p=361) + Official documentation)
+
+- If you use a PL2303 USB to Serial adapter, you need to protect it from the Rx
+  voltage.
+
 WIP
 
 ## Abort mission
