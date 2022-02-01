@@ -1,6 +1,6 @@
 # minitel-av
 
-A small Audio Visual Minitel project.
+A small audiovisual Minitel project.
 
 This repository is here to share some research on an audio-visual multiscreen
 audio-reactive setup, using obsolete devices like the Minitel. It contains
